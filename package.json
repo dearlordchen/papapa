@@ -1,0 +1,27 @@
+{
+  "name": "papapa",
+  "version": "1.0.0",
+  "description": "node爬虫项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dearlordchen/papapa.git"
+  },
+  "keywords": [
+    "node",
+    "crawler",
+    "爬虫"
+  ],
+  "author": "lord",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dearlordchen/papapa/issues"
+  },
+  "homepage": "https://github.com/dearlordchen/papapa#readme",
+  "dependencies": {
+    "koa": "^1.2.4"
+  }
+}
