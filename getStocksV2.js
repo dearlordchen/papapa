@@ -71,16 +71,24 @@ MysqlConnect.then(function(db){
     getCodesFile.then(function(data){
         codeList = JSON.parse(data);
         console.log(codeList.length);
-        codeList = codeList.slice(0,99);
+        // codeList = codeList.slice(0,99);
         console.log(codeList.length);
         //process.exit();
 
-        let codeChunks = _.chunk(codeList, 100);
+        let codeChunks = _.chunk(codeList, 90);
 
 
-        async.mapSeries(codeChunks, function(chunk,cb){handleChunk(chunk);cb(null,chunk);}, function(err,results) {
+        async.mapSeries(codeChunks, function(chunk,cb){
+            try{
+                handleChunk(chunk);
+                cb(null,chunk);
+            }catch(e){
+                console.log('catch error..'+e);
+            }
+
+        }, function(err,results) {
             console.log(results);
-        })
+        });
 
         function handleChunk(codeList){
 
@@ -96,7 +104,15 @@ MysqlConnect.then(function(db){
             }
 
 
-            async.mapLimit(stockList,3,function(node,cb){fetchData(node);cb(null,node);}, function(err,results) {
+            async.mapLimit(stockList,3,function(node,cb){
+                try{
+                    fetchData(node);
+                    cb(null,node);
+                }catch(e){
+                    console.log('catch error..'+e);
+                }
+
+            }, function(err,results) {
                 // console.log(results);
             });
 
@@ -174,7 +190,7 @@ MysqlConnect.then(function(db){
 
             }
         }
-        handleChunk(codeList);
+        // handleChunk(codeList);
         // fetchData(0);
     });
 
