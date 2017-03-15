@@ -27,7 +27,6 @@ function fetchData() {
             resolve(res);
         }).end();
     });
-
     requestStockData.then(function(res){
 
         let $ = cheerio.load(res.body.toString());
@@ -59,6 +58,7 @@ function fetchData() {
 fetchData();
 
 return;
+
 
 
 
